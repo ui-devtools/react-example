@@ -61,7 +61,7 @@ npx tailwindcss init -p
 
 &nbsp;
 
-Next, create a `craco.config.js` at the root of our project and add the tailwindcss and autoprefixer as PostCSS plugins **along with the UI Devtools babel plugin**:
+Next, create a [`craco.config.js`](/craco.config.js) at the root of our project and add the tailwindcss and autoprefixer as PostCSS plugins **along with the UI Devtools babel plugin**:
 
 &nbsp;
 
@@ -81,7 +81,7 @@ module.exports = {
 
 &nbsp;
 
-Modify scripts in `package.json` to use `craco`
+Modify scripts in [`package.json`](/package.json) to use `craco`
 
 ```js
   "scripts": {
@@ -94,7 +94,7 @@ Modify scripts in `package.json` to use `craco`
 
 &nbsp;
 
-Include Tailwind in `./src/index.css`
+Include Tailwind in [`./src/index.css`](/src/index.css)
 
 ```css
 /* ./src/index.css */
@@ -111,7 +111,7 @@ Include Tailwind in `./src/index.css`
 
 &nbsp;
 
-Wrap your application root with `<Devtools>` in `src/index.js`. This will render the visual editor inside your application for dev environment:
+Wrap your application root with `<Devtools>` in [`src/index.js`](src/index.js). This will render the visual editor inside your application for dev environment:
 
 &nbsp;
 
