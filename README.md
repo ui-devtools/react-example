@@ -1,70 +1,152 @@
-# Getting Started with Create React App
+<p align="center">
+  <img alt="UI Devtools" src="https://avatars2.githubusercontent.com/u/71650913?s=200&v=4" height="100px"/>
+  <img alt="React" src="public/logo192.png"  height="100px" /></a>
+  <br><br>
+  <b>Example setup for React + TailwindCSS + UI Devtools</b>
+  <br><br/><br><br/>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+&nbsp;
 
-## Available Scripts
+&nbsp;
 
-In the project directory, you can run:
+**01**
 
-### `yarn start`
+&nbsp;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Use create-react-app to initialise a new React project:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+&nbsp;
 
-### `yarn test`
+```
+npx create-react-app react-example
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+cd react-example
+```
 
-### `yarn build`
+&nbsp;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Add UI Devtools for tailwind
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+&nbsp;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+yarn add --dev ui-devtools/tailwind
+```
 
-### `yarn eject`
+&nbsp;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+&nbsp;
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**02**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+&nbsp;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Add TailwindCSS following the [official documentation](https://tailwindcss.com/docs/guides/create-react-app)
 
-## Learn More
+&nbsp;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```shell
+yarn add --dev tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+yarn add --dev @craco/craco
 
-### Code Splitting
+npx tailwindcss init -p
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+&nbsp;
 
-### Analyzing the Bundle Size
+Next, create a `craco.config.js` at the root of our project and add the tailwindcss and autoprefixer as PostCSS plugins **along with the UI Devtools babel plugin**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+&nbsp;
 
-### Making a Progressive Web App
+```js
+// craco.config.js
+module.exports = {
+  style: {
+    postcss: {
+      plugins: [require('tailwindcss'), require('autoprefixer')]
+    }
+  },
+  babel: {
+    plugins: ['@ui-devtools/tailwind/babel']
+  }
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+&nbsp;
 
-### Advanced Configuration
+Modify scripts in `package.json` to use `craco`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```js
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+```
 
-### Deployment
+&nbsp;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Include Tailwind in `./src/index.css`
 
-### `yarn build` fails to minify
+```css
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+&nbsp;
+
+&nbsp;
+
+**03**
+
+&nbsp;
+
+Wrap your application root with `<Devtools>` in `src/index.js`. This will render the visual editor inside your application for dev environment:
+
+&nbsp;
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Devtools } from '@ui-devtools/tailwind';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Devtools>
+      <App />
+    </Devtools>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+&nbsp;
+
+&nbsp;
+
+**04**
+
+&nbsp;
+
+Start devtools server
+
+&nbsp;
+
+```shell
+npx devtools-server -c tailwind.config.js
+```
+
+&nbsp;
+
+#### Something's not working?
+
+No worries, I'm here to help. Feel free to create an issue or reach out to me on [twitter](https://twitter.com/siddharthkp)/[email](https://sid.st/email).
+
+&nbsp;
