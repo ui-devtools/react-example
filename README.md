@@ -7,6 +7,9 @@
 </p>
 
 &nbsp;
+&nbsp;
+
+You can clone this repository or follow the steps ahead:
 
 &nbsp;
 
@@ -33,6 +36,8 @@ Add UI Devtools for tailwind
 ```
 yarn add --dev ui-devtools/tailwind
 ```
+
+This package is available only to my sponsors on GitHub. Enjoy, and thanks for the support!
 
 &nbsp;
 
