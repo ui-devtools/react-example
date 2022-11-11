@@ -4,7 +4,7 @@
   <br><br>
   <b>Example setup for React + TailwindCSS + UI Devtools</b>
   <br><br/><br/>
-  <i>Note: To use this example, you will need access to `ui-devtools/tailwind` which is available only to my sponsors on GitHub <br/>
+  <i>Note: To use this example, you will need access to <a href="https://github.com/ui-devtools/tailwind"><code>ui-devtools/tailwind</code></a> <br/>which is available only to my sponsors on GitHub <br/>
   <br><br/>
 </p>
 
