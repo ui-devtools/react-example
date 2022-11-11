@@ -3,7 +3,9 @@
   <img alt="React" src="public/logo192.png"  height="100px" /></a>
   <br><br>
   <b>Example setup for React + TailwindCSS + UI Devtools</b>
-  <br><br/><br><br/>
+  <br><br/><br/>
+  <i>Note: To use this example, you will need access to `ui-devtools/tailwind` which is available only to my sponsors on GitHub <br/>
+  <br><br/>
 </p>
 
 &nbsp;
